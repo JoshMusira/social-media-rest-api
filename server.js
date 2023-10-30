@@ -1,12 +1,15 @@
 import express from 'express'
 import cors from 'cors';
 import dotenv from 'dotenv'
-
+import mongoose from 'mongoose'
+import helmet from 'helmet'
+import morgan from 'morgan'
+import connectDB from './config/db.js'
 
 dotenv.config();
 const port = process.env.PORT || 5000
 
-
+connectDB();
 
 const app = express();
 
