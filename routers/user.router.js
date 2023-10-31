@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { updateUser } from "../controllers/user.controller.js";
+import { deleteUser, updateUser } from "../controllers/user.controller.js";
 
 export const homeRouter = Router();
 
@@ -8,3 +8,4 @@ homeRouter.get("/", (req, res) => {
 });
 
 homeRouter.patch("/users/:id", updateUser);
+homeRouter.delete("/users/:id", deleteUser);
