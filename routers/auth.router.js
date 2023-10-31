@@ -26,3 +26,15 @@ authRouter.post("/auth/register", async (req, res) => {
     }
 
 });
+
+//LOGIN USER
+
+authRouter.post("/auth/login", async (req, res) => {
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        !user && res.status(404).json("User not found");
+
+    } catch (error) {
+        console.log(error)
+    }
+})
