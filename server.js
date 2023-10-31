@@ -6,6 +6,7 @@ import connectDB from './config/db.js'
 import { homeRouter } from './routers/user.router.js';
 import { authRouter } from './routers/auth.router.js';
 import { startServer } from './boot/boot.js';
+import errorHandler from './middleware/errorMiddleware.js';
 
 connectDB();
 
@@ -18,10 +19,12 @@ app.use(
     })
 )
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 app.use(helmet());
 app.use(morgan("common"));
+
+app.use(errorHandler)
 
 app.use('/', homeRouter)
 app.use('/api', homeRouter)
